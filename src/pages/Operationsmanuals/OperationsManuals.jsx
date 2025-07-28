@@ -84,7 +84,7 @@ const LogoCard = ({ image, title }) => {
         }}
       >
         <Tooltip title="View">
-          <Link to="/manuals/view">
+          <Link to="./docs">
             <IconButton size="small" color="primary" sx={{ bgcolor: "white" }}>
               <VisibilityIcon fontSize="small" />
             </IconButton>

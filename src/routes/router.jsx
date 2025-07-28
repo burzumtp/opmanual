@@ -8,7 +8,9 @@ import Profile from "../pages/Dashboard/components/Profile/index";
 import PrivateLayout from "../Layout/Privatelayout";
 import OperationsManuals from "../pages/Operationsmanuals/OperationsManuals";
 import ManualsDocs from "../pages/ManualsDocs/ManualsDocs";
+import SideDocs from "../pages/ManualsDocs/components/SideDocs"
 import NotFound from "../pages/NotFound";
+
 
 export const router = createBrowserRouter([
   {
@@ -58,9 +60,16 @@ export const router = createBrowserRouter([
         <PrivateLayout />
       </PrivateRoute>
     ),
-    children :[
-      {index:true , element : <ManualsDocs />}
-    ]
+    children: [
+    {
+      path: "",
+      element: <ManualsDocs />, // this will show at /operations/manuals/docs
+      children: [
+        // { index: true, element: <div>Select a document</div> },
+        { path: "policy/:id", element: <SideDocs /> }, // this will render inside ManualsDocs via <Outlet />
+      ],
+    },
+  ],
   },
 
 

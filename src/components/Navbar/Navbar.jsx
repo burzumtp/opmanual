@@ -20,7 +20,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import banner from "../../assets/banner.jpg"
-import { NavLink } from "react-router-dom";
+import Logo from "../../assets/logo.png"
+import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 // ...imports remain the same
@@ -142,9 +143,14 @@ const Navbar = () => {
       <AppBar position="static" sx={{ backgroundColor: "#002B5B" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           {/* Left Logo */}
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-            LOGO
-          </Typography>
+       <Link to="/dashboard" style={{ display: "inline-block" }}>   <Box
+          
+    component="img"
+    src={Logo}
+    alt="Logo"
+    sx={{ height: 40, cursor: "pointer" }}
+  />
+  </Link>
 
           {/* Center & Right */}
           {isMobile ? (
