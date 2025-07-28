@@ -8,7 +8,7 @@ function Dashboard() {
     <Box
       sx={{
          justifyContent: { xs: "center", md: "center" },
-         alignItems: { xs: "center", md: "center" },
+         alignItems: { xs: "center", md: "flex-start",lg:"flex-start" },
         display: "flex",
         backgroundColor: "#FAF7F3",
         flexDirection: { xs: "column", md: "row" },
@@ -69,7 +69,7 @@ function Dashboard() {
           <Typography variant="body2">Some content here...</Typography>
         </Paper> */}
         <Paper elevation={2} sx={{ padding: 2, borderRadius: 2, boxSizing: "border-box", overflowY: "auto", }}>
-          <Typography variant="subtitle1">Lorem</Typography>
+          <Typography variant="subtitle1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, officiis rem ad vel quibusdam, explicabo tempore illum, quasi odit sequi dolor blanditiis obcaecati soluta maxime nisi porro delectus maiores impedit dignissimos aliquam deleniti magni vitae optio repellat. Officia nam itaque, aperiam quis ex tenetur magnam consectetur earum accusantium assumenda numquam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, officiis rem ad vel quibusdam, explicabo tempore illum, quasi odit sequi dolor blanditiis obcaecati soluta maxime nisi porro delectus maiores impedit dignissimos aliquam deleniti magni vitae optio repellat. Officia nam itaque, aperiam quis ex tenetur magnam consectetur earum accusantium assumenda numquam</Typography>
           <Typography variant="body2">Additional info...</Typography>
         </Paper>
       </Box>

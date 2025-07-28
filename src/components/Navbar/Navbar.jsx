@@ -68,7 +68,7 @@ const Navbar = () => {
     <ListItem button component={NavLink} to="/dashboard" style={navLinkStyle}>
       <ListItemText primary="Dashboard" primaryTypographyProps={{ fontWeight: "bold" }} />
     </ListItem>
-    <ListItem button component={NavLink} to="/operations" style={navLinkStyle}>
+    <ListItem button component={NavLink} to="/operations/manuals" style={navLinkStyle}>
       <ListItemText primary="Operations Manual" primaryTypographyProps={{ fontWeight: "bold" }} />
     </ListItem>
     <ListItem button component={NavLink} to="/reporting" style={navLinkStyle}>
@@ -170,7 +170,7 @@ const Navbar = () => {
                 <Button
                   color="inherit"
                   component={NavLink}
-                  to="/overview"
+                  to="/operations/manuals"
                   style={navLinkStyle}
                 >
                   Operations Manual
@@ -185,7 +185,7 @@ const Navbar = () => {
                 </Button>
                 <Button
                   color="inherit"
-                  onMouseEnter={handleAdminClick}
+                  onClick={handleAdminClick}
                   endIcon={<ArrowDropDownIcon />}
                   component="span"
                 >

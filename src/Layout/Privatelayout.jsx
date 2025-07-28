@@ -7,7 +7,7 @@ const PrivateLayout = () => {
   return (
     <>
       <Navbar />
-      <Box mt="120px" px={3}>
+      <Box mt="60px" px={3}>
         <Outlet />
       </Box>
     </>

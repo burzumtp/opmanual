@@ -13,7 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { loginUser } from "../../utils/api";
-import LoginImage from "../../assets/loginLogo.jpg";
+import LoginImage from "../../assets/bluewheelerslogo-operationsmanuals.png";
 import { InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 

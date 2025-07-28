@@ -32,6 +32,7 @@ function NewsCard() {
   return (
     <Box
       sx={{
+        alignItems:"flex-start",
         bgcolor: "inherit",
         paddingLeft: "1rem",
         paddingBottom: 0,
@@ -118,7 +119,116 @@ function NewsCard() {
         >
           Read More
         </Button>
+        
       </Box>
+       <Typography
+        variant="subtitle1"
+        gutterBottom
+        sx={{
+          fontWeight: 450,
+          fontSize: "1.3rem",
+          mb: 1,
+          display: "block",
+          color: "black",
+          textDecoration: "underline",
+        }}
+      >
+        Welcome to your Operations Manual
+      </Typography>
+
+      <Typography variant="body2" sx={{ mb: 2, fontSize: "1.2rem" }}>
+        Please click the side menu button or the Quick Link to access the
+        Manual. If you have any issues, please contact Support Office 03 9826
+        5266 or office@bluewheelers.com.au
+      </Typography>
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#D8D80E",
+            textTransform: "none",
+            marginBottom: "1rem",
+            marginRight: "1rem",
+          }}
+        >
+          Read More
+        </Button>
+        
+      </Box>
+
+      <Typography
+        variant="subtitle1"
+        gutterBottom
+        sx={{
+          fontWeight: 450,
+          fontSize: "1.3rem",
+          mb: 1,
+          display: "block",
+          color: "black",
+          textDecoration: "underline",
+        }}
+      >
+        Welcome to your Operations Manual
+      </Typography>
+
+      <Typography variant="body2" sx={{ mb: 2, fontSize: "1.2rem" }}>
+        Please click the side menu button or the Quick Link to access the
+        Manual. If you have any issues, please contact Support Office 03 9826
+        5266 or office@bluewheelers.com.au
+      </Typography>
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#D8D80E",
+            textTransform: "none",
+            marginBottom: "1rem",
+            marginRight: "1rem",
+          }}
+        >
+          Read More
+        </Button>
+        
+      </Box>
+       <Typography
+        variant="subtitle1"
+        gutterBottom
+        sx={{
+          fontWeight: 450,
+          fontSize: "1.3rem",
+          mb: 1,
+          display: "block",
+          color: "black",
+          textDecoration: "underline",
+        }}
+      >
+        Welcome to your Operations Manual
+      </Typography>
+
+      <Typography variant="body2" sx={{ mb: 2, fontSize: "1.2rem" }}>
+        Please click the side menu button or the Quick Link to access the
+        Manual. If you have any issues, please contact Support Office 03 9826
+        5266 or office@bluewheelers.com.au
+      </Typography>
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#D8D80E",
+            textTransform: "none",
+            marginBottom: "1rem",
+            marginRight: "1rem",
+          }}
+        >
+          Read More
+        </Button>
+        
+      </Box>
+      
+
     </Box>
   );
 }
