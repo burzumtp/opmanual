@@ -89,7 +89,7 @@ export const router = createBrowserRouter([
        children:[
 {index:true,element : <ReportingOpManuals/>},
 {path:"manuals",element : <ReportingOpManuals />},
-{path :" news", element : <ReportingNews />}
+{path :"news", element : <ReportingNews />}
 
        ]
 

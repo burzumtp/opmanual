@@ -58,7 +58,8 @@ const barData = [
 const scatterData = new Array(40).fill(0).map((_, i) => ({ x: i, y: 95 + Math.random() * 5 }));
 const ReportingOpManuals = () => {
   return (
-    <div> <Grid item size={9}>
+    <div> <Grid container spacing={2}>
+        <Grid item size={{xl:12,xs:12}}>
           <Card>
             <CardContent>
               <Typography variant="subtitle2" fontWeight="bold" fontSize={16}>
@@ -66,12 +67,13 @@ const ReportingOpManuals = () => {
               </Typography>
             </CardContent>
           </Card>
+          </Grid>
 
-          <Grid container spacing={4} mt={3}>
-            <Grid item xs={12} md={4} size={4}>
+          {/* <Grid container spacing={4} mt={3}> */}
+            <Grid item size={{xs:12,md:4}} >
               <Card>
                 <CardContent sx={{ py:2}}>
-                  <Typography variant="subtitle2" fontWeight="bold" gutterBottom>
+                  <Typography variant="subtitle2" fontWeight="bold" textAlign="center" gutterBottom>
                     OVERALL POLICY COMPLIANCE
                   </Typography>
                    <Divider sx={{ my: 2 }} /> 
@@ -107,9 +109,9 @@ const ReportingOpManuals = () => {
               </Card>
             </Grid>
 
-            <Grid item xs={12} md={8} size={8}>
+            <Grid item  size={{xs:12,md:8}} >
               <Card>
-                <CardContent>
+                <CardContent sx={{ py:1}}>
                   <Box display="flex" justifyContent="space-between" alignItems="center" mb={0} mt={0}>
                     <Typography variant="subtitle2" fontWeight="bold">
                       POLICY COMPLIANCE (BY LOCATION)
@@ -137,10 +139,12 @@ const ReportingOpManuals = () => {
                   </ResponsiveContainer>
                 </CardContent>
               </Card>
-            </Grid>
+            {/* </Grid> */}
           </Grid>
+<Grid size={12}>
 
-          <Card sx={{ mt: 2 }}>
+
+          <Card >
             <CardContent>
               <Typography variant="subtitle2" fontWeight="bold" gutterBottom>
                 POLICY COMPLIANCE (BY STAFF)
@@ -155,6 +159,7 @@ const ReportingOpManuals = () => {
 
             </CardContent>
           </Card>
+          </Grid>
         </Grid></div>
   )
 }
