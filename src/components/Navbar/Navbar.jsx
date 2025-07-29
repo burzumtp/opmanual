@@ -184,7 +184,7 @@ const Navbar = () => {
                 <Button
                   color="inherit"
                   component={NavLink}
-                  to="/reporting"
+                  to="/reporting/manuals"
                   style={navLinkStyle}
                 >
                   Reporting

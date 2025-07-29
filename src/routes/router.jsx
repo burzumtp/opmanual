@@ -10,6 +10,12 @@ import OperationsManuals from "../pages/Operationsmanuals/OperationsManuals";
 import ManualsDocs from "../pages/ManualsDocs/ManualsDocs";
 import SideDocs from "../pages/ManualsDocs/components/SideDocs"
 import NotFound from "../pages/NotFound";
+import Reporting from "../pages/Reporting/Reporting";
+import ReportingNews from "../pages/Reporting/components/ReportingNews";
+import Test from "../pages/test/Test";
+import Route1 from "../pages/test/components/Route1";
+import Route2 from "../pages/test/components/Route2";
+import ReportingOpManuals from "../pages/Reporting/components/ReportingOpManuals";
 
 
 export const router = createBrowserRouter([
@@ -71,7 +77,50 @@ export const router = createBrowserRouter([
     },
   ],
   },
+  {
+    path : "/reporting",
+    element : (
+      <PrivateRoute>
+        <PrivateLayout />
+      </PrivateRoute>
+    ),
+    children:[
+       {path: "", element: <Reporting /> ,
+       children:[
+{index:true,element : <ReportingOpManuals/>},
+{path:"manuals",element : <ReportingOpManuals />},
+{path :" news", element : <ReportingNews />}
 
+       ]
+
+
+
+       },
+
+    ]
+  },
+{
+  path : "/test",
+  element:(
+    <PrivateRoute>
+      <PrivateLayout />
+    </PrivateRoute>
+  ),
+  children:[
+    {path: "" , element: <Test />,
+      children:[
+          {
+          index: true, // ✅ This means "/test" will load this route by default
+          element: <Route1 />,
+        },
+        {path:"routetest1", element : <Route1 />},
+        {path:"routetest2", element : <Route2 />}
+      ]
+
+
+    },
+  ]
+},
 
 
 

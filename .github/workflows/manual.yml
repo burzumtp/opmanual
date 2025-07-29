@@ -1,0 +1,37 @@
+name: manual
+
+on:
+  push:
+    branches:
+      - main  # Replace with your specific branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16' # Use the Node.js version compatible with your project
+
+    - name: Install dependencies
+      run: yarn install --ignore-engines
+
+    - name: Build the project
+      run: yarn build
+
+    - name: List Out Folders
+      run: ls
+
+    - name: Upload to FTP server
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: 101.0.102.218
+        username: opmanual
+        password: "@VucETGj7A%*wp7Q"
+        local-dir: ./build/ # directory to upload
+        server-dir: public_html/ # target directory on the FTP server
