@@ -22,7 +22,7 @@ jobs:
         run: npm install --ignore-engines
 
       - name: Build the project
-        run: npm build
+        run: npm run build
 
       - name: List Out Folders
         run: ls
