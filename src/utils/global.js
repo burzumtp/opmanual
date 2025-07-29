@@ -2,21 +2,21 @@ let GlobalURL;
 
 let LocalGlobalURL =[
 {
-    url : "https://opmanual.franchise.care/public/api/v1",
+    url : "https://opmanual.franchise.care/php/public/api/v1",
     version: "1.0"
 }
 ];
 
 let LiveGlobalURL = [
 {
-    url:"https://opmanual.franchise.care/public/api/v1",
+    url:"https://opmanual.franchise.care/php/public/api/v1",
     version: "1.0"
 }
 ];
 
 let StagingGlobalURL =[
     {
-    url: "https://opmanual.franchise.care/public/api/v1",
+    url: "https://opmanual.franchise.care/php/public/api/v1",
     version: "1.0"
     }
 ]
