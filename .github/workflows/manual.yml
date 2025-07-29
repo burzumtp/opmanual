@@ -33,5 +33,5 @@ jobs:
           server: 101.0.102.218
           username: opmanual
           password: "@VucETGj7A%*wp7Q"
-          local-dir: ./build/ # directory to upload
+          local-dir: ./dist/ # directory to upload
           server-dir: public_html/ # target directory on the FTP server
