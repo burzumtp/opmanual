@@ -8,7 +8,7 @@ import Profile from "../pages/Dashboard/components/Profile/index";
 import PrivateLayout from "../Layout/Privatelayout";
 import OperationsManuals from "../pages/Operationsmanuals/OperationsManuals";
 import ManualsDocs from "../pages/ManualsDocs/ManualsDocs";
-import SideDocs from "../pages/ManualsDocs/components/SideDocs"
+import SideDocs from "../pages/ManualsDocs/components/SideDocs";
 import NotFound from "../pages/NotFound";
 import Reporting from "../pages/Reporting/Reporting";
 import ReportingNews from "../pages/Reporting/components/ReportingNews";
@@ -17,6 +17,9 @@ import Route1 from "../pages/test/components/Route1";
 import Route2 from "../pages/test/components/Route2";
 import ReportingOpManuals from "../pages/Reporting/components/ReportingOpManuals";
 import ManageNews from "../pages/ManageNews/ManageNews";
+import ManageNewsArticle from "../pages/ManageNewsArticle/ManageNewsArticle";
+import ArticleDetails from "../pages/ManageNewsArticle/components/ArticleDetails";
+import ArticlePermissions from "../pages/ManageNewsArticle/components/ArticlePermissions";
 
 export const router = createBrowserRouter([
   {
@@ -49,101 +52,109 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path:"/operations/manuals",
-    element:(
+    path: "/operations/manuals",
+    element: (
       <PrivateRoute>
-     <PrivateLayout />
+        <PrivateLayout />
       </PrivateRoute>
     ),
-    children:[
-      {index:true, element: <OperationsManuals />}
-    ]
+    children: [{ index: true, element: <OperationsManuals /> }],
   },
   {
-    path : "/operations/manuals/docs",
-    element :(
+    path: "/operations/manuals/docs",
+    element: (
       <PrivateRoute>
         <PrivateLayout />
       </PrivateRoute>
     ),
     children: [
-    {
-      path: "",
-      element: <ManualsDocs />, // this will show at /operations/manuals/docs
-      children: [
-        // { index: true, element: <div>Select a document</div> },
-        { path: "policy/:id", element: <SideDocs /> }, // this will render inside ManualsDocs via <Outlet />
-      ],
-    },
-  ],
+      {
+        path: "",
+        element: <ManualsDocs />, // this will show at /operations/manuals/docs
+        children: [
+          // { index: true, element: <div>Select a document</div> },
+          { path: "policy/:id", element: <SideDocs /> }, // this will render inside ManualsDocs via <Outlet />
+        ],
+      },
+    ],
   },
   {
-    path : "/reporting",
-    element : (
+    path: "/reporting",
+    element: (
       <PrivateRoute>
         <PrivateLayout />
       </PrivateRoute>
     ),
-    children:[
-       {path: "", element: <Reporting /> ,
-       children:[
-{index:true,element : <ReportingOpManuals/>},
-{path:"manuals",element : <ReportingOpManuals />},
-{path :"news", element : <ReportingNews />}
-
-       ]
-
-
-
-       },
-
-    ]
+    children: [
+      {
+        path: "",
+        element: <Reporting />,
+        children: [
+          { index: true, element: <ReportingOpManuals /> },
+          { path: "manuals", element: <ReportingOpManuals /> },
+          { path: "news", element: <ReportingNews /> },
+        ],
+      },
+    ],
   },
-{
-  path : "/test",
-  element:(
-    <PrivateRoute>
-      <PrivateLayout />
-    </PrivateRoute>
-  ),
-  children:[
-    {path: "" , element: <Test />,
-      children:[
-          {
-          index: true, // ✅ This means "/test" will load this route by default
-          element: <Route1 />,
-        },
-        {path:"routetest1", element : <Route1 />},
-        {path:"routetest2", element : <Route2 />}
-      ]
-
-
-    },
-    
-  ]
-},
   {
-  path : "/manage/news",
-  element:(
-    <PrivateRoute>
-      <PrivateLayout />
-    </PrivateRoute>
-  ),
-  children:[
-    {index: true, element: <ManageNews/>,}
-  ]
-},
-// {
-//   path : "/mana"
-// }
+    path: "/test",
+    element: (
+      <PrivateRoute>
+        <PrivateLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "",
+        element: <Test />,
+        children: [
+          {
+            index: true, // ✅ This means "/test" will load this route by default
+            element: <Route1 />,
+          },
+          { path: "routetest1", element: <Route1 /> },
+          { path: "routetest2", element: <Route2 /> },
+        ],
+      },
+    ],
+  },
+  {
+    path: "/manage/news",
+    element: (
+      <PrivateRoute>
+        <PrivateLayout />
+      </PrivateRoute>
+    ),
+    children: [{ index: true, element: <ManageNews /> }],
+  },
+  // {
+  //   path : "/mana"
+  // }
+  {
+    path: "/manage/newsarticle/:articleid",
+    element: (
+      <PrivateRoute>
+        <PrivateLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "",
+        element: <ManageNewsArticle />,
+        children: [
+          {
+            index: true, // ✅ This means "/test" will load this route by default
+            element: <ArticleDetails />,
+          },
+          { path: "details", element: <ArticleDetails /> },
+          { path: "permissions", element: <ArticlePermissions /> },
+        ],
+      },
+    ],
+  },
 
-
-
-
-
-
-
-   // ✅ Catch-all route for 404
+  // ✅ Catch-all route for 404
   {
     path: "*",
     element: <NotFound />,

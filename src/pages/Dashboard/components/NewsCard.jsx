@@ -11,8 +11,7 @@ import {
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
 
-function NewsCard({newsData}) {
-  
+function NewsCard({ newsData }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
   const open = Boolean(anchorEl);
@@ -33,7 +32,7 @@ function NewsCard({newsData}) {
   return (
     <Box
       sx={{
-        alignItems:"flex-start",
+        alignItems: "flex-start",
         bgcolor: "inherit",
         paddingLeft: "1rem",
         paddingBottom: 0,
@@ -77,7 +76,7 @@ function NewsCard({newsData}) {
           transformOrigin={{ vertical: "top", horizontal: "right" }}
         >
           <MenuItem onClick={() => handleMenuItemClick("/admin/news/edit")}>
-        Manage Articles
+            Manage Articles
           </MenuItem>
           <MenuItem onClick={() => handleMenuItemClick("/admin/news/delete")}>
             View all articles
@@ -87,7 +86,7 @@ function NewsCard({newsData}) {
 
       <Divider sx={{ mb: 2 }} />
 
-      {newsData.map((newsItem)=>{
+      {newsData.map((newsItem) => {
         return (
           <Box
             key={newsItem.id}
@@ -107,24 +106,21 @@ function NewsCard({newsData}) {
               {new Date(newsItem.created_at).toLocaleDateString()}
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
-          variant="contained"
-          sx={{
-            bgcolor: "#D8D80E",
-            textTransform: "none",
-            marginBottom: "1rem",
-            marginRight: "1rem",
-          }}
-        >
-          Read More
-        </Button>
-        
-      </Box>
+              <Button
+                variant="contained"
+                sx={{
+                  bgcolor: "#D8D80E",
+                  textTransform: "none",
+                  marginBottom: "1rem",
+                  marginRight: "1rem",
+                }}
+              >
+                Read More
+              </Button>
+            </Box>
           </Box>
-          
         );
-      })
-      }
+      })}
 
       {/* <Typography
         variant="subtitle1"
@@ -267,8 +263,6 @@ function NewsCard({newsData}) {
         </Button>
         
       </Box> */}
-      
-
     </Box>
   );
 }

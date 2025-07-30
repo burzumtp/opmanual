@@ -5,7 +5,6 @@
 // const ManualsDocs = () => {
 //   return (
 
-    
 //     <div>this is operations manuals Docs pages
 // <Link to = "policy/1">this is a docs child </Link>
 // {/* <SideDocs /> */}
@@ -32,13 +31,18 @@ import {
   Button,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { httpClient } from "../../utils/httpClientSetup";
 
 const sampleData = [
   {
     id: "1",
     title: "1.0 FRANCHISE OPERATIONS & PROCEDURES MANUAL",
     subsections: [
-      { id: "1.1", title: "1.1 Acknowledgement & Receipt - Franchisor Copy", apiId: 1 },
+      {
+        id: "1.1",
+        title: "1.1 Acknowledgement & Receipt - Franchisor Copy",
+        apiId: 1,
+      },
       { id: "1.2", title: "1.2 How to Use this Manual", apiId: 2 },
     ],
   },
@@ -73,7 +77,29 @@ const ManualsDocs = () => {
   const [apiContent, setApiContent] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [sections, setSections] = useState([]);
+  const [error, setError] = useState(null);
 
+  const fetchSections = () => {
+    setLoading(true);
+
+    httpClient
+      .get("navigations")
+      .then(
+        (response) => {
+          const data = response.data;
+          if (data.success) {
+            setSections(data.data);
+          }
+        },
+        (error) => {
+          setError(error.response?.data?.message || "failed to load sections");
+        }
+      )
+      .finally(() => {
+        setLoading(false);
+      });
+  };
   const handleToggleSection = (sectionId) => {
     setExpandedSection((prev) => (prev === sectionId ? null : sectionId));
   };
@@ -83,6 +109,7 @@ const ManualsDocs = () => {
   };
 
   useEffect(() => {
+    fetchSections();
     if (!selected?.apiId) return;
 
     setLoading(true);
@@ -101,7 +128,9 @@ const ManualsDocs = () => {
 
   const handlePlay = () => {
     if (apiContent?.title || apiContent?.body) {
-      const msg = new SpeechSynthesisUtterance(`${apiContent.title}. ${apiContent.body}`);
+      const msg = new SpeechSynthesisUtterance(
+        `${apiContent.title}. ${apiContent.body}`
+      );
       msg.onend = () => setIsSpeaking(false);
       window.speechSynthesis.speak(msg);
       setIsSpeaking(true);
@@ -138,11 +167,14 @@ const ManualsDocs = () => {
                     <ListItemButton
                       sx={{
                         pl: 2,
-                        backgroundColor: selected?.apiId === sub.apiId ? "#d1eaff" : "inherit",
-                        color: selected?.apiId === sub.apiId ? "#0d47a1" : "inherit",
+                        backgroundColor:
+                          selected?.apiId === sub.apiId ? "#d1eaff" : "inherit",
+                        color:
+                          selected?.apiId === sub.apiId ? "#0d47a1" : "inherit",
                       }}
                       onClick={() =>
-                        sub.apiId && handleSelectContent(section.title, sub.title, sub.apiId)
+                        sub.apiId &&
+                        handleSelectContent(section.title, sub.title, sub.apiId)
                       }
                     >
                       <ListItemText primary={sub.title} />
@@ -153,12 +185,22 @@ const ManualsDocs = () => {
                           key={child.id}
                           sx={{
                             pl: 4,
-                            backgroundColor: selected?.apiId === child.apiId ? "#d1eaff" : "inherit",
-                            color: selected?.apiId === child.apiId ? "#0d47a1" : "inherit",
+                            backgroundColor:
+                              selected?.apiId === child.apiId
+                                ? "#d1eaff"
+                                : "inherit",
+                            color:
+                              selected?.apiId === child.apiId
+                                ? "#0d47a1"
+                                : "inherit",
                           }}
                           onClick={() =>
                             child.apiId &&
-                            handleSelectContent(section.title, child.title, child.apiId)
+                            handleSelectContent(
+                              section.title,
+                              child.title,
+                              child.apiId
+                            )
                           }
                         >
                           <ListItemText primary={child.title} />
@@ -198,7 +240,9 @@ const ManualsDocs = () => {
               <Typography color="inherit">{selected.sectionTitle}</Typography>
             )}
             {selected?.subsectionTitle && (
-              <Typography color="text.primary">{selected.subsectionTitle}</Typography>
+              <Typography color="text.primary">
+                {selected.subsectionTitle}
+              </Typography>
             )}
           </Breadcrumbs>
 
