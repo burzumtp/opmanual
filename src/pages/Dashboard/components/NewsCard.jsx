@@ -11,7 +11,8 @@ import {
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
 
-function NewsCard() {
+function NewsCard({newsData}) {
+  
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
   const open = Boolean(anchorEl);
@@ -86,7 +87,46 @@ function NewsCard() {
 
       <Divider sx={{ mb: 2 }} />
 
-      <Typography
+      {newsData.map((newsItem)=>{
+        return (
+          <Box
+            key={newsItem.id}
+            sx={{
+              mb: 2,
+              p: 2,
+              backgroundColor: "#fff",
+              borderRadius: 1,
+              boxShadow: 1,
+            }}
+          >
+            <Typography variant="h6">{newsItem.title}</Typography>
+            <Typography variant="body2" sx={{ mt: 1 }}>
+              {newsItem.content}
+            </Typography>
+            <Typography variant="caption" display="block" sx={{ mt: 1 }}>
+              {new Date(newsItem.created_at).toLocaleDateString()}
+            </Typography>
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#D8D80E",
+            textTransform: "none",
+            marginBottom: "1rem",
+            marginRight: "1rem",
+          }}
+        >
+          Read More
+        </Button>
+        
+      </Box>
+          </Box>
+          
+        );
+      })
+      }
+
+      {/* <Typography
         variant="subtitle1"
         gutterBottom
         sx={{
@@ -226,7 +266,7 @@ function NewsCard() {
           Read More
         </Button>
         
-      </Box>
+      </Box> */}
       
 
     </Box>

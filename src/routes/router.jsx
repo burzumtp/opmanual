@@ -16,7 +16,7 @@ import Test from "../pages/test/Test";
 import Route1 from "../pages/test/components/Route1";
 import Route2 from "../pages/test/components/Route2";
 import ReportingOpManuals from "../pages/Reporting/components/ReportingOpManuals";
-
+import ManageNews from "../pages/ManageNews/ManageNews";
 
 export const router = createBrowserRouter([
   {
@@ -119,8 +119,26 @@ export const router = createBrowserRouter([
 
 
     },
+    
   ]
 },
+  {
+  path : "/manage/news",
+  element:(
+    <PrivateRoute>
+      <PrivateLayout />
+    </PrivateRoute>
+  ),
+  children:[
+    {index: true, element: <ManageNews/>,}
+  ]
+},
+// {
+//   path : "/mana"
+// }
+
+
+
 
 
 

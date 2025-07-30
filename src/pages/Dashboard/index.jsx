@@ -2,8 +2,35 @@ import { Outlet } from "react-router-dom";
 import { Box, Paper, Typography } from "@mui/material";
 import NewsCard from "./components/NewsCard";
 import RightCard from "./components/RightCard1"
+import { httpClient } from "../../utils/httpClientSetup";
+import { useEffect, useState } from "react";
 
 function Dashboard() {
+  const[news,setNews] = useState([]);
+  const[loading,setLoading]= useState(true);
+  const[error,setError] = useState(null);        
+
+   const getNews=() => {
+    setLoading(true)
+  httpClient.get("news").then( (response)=>{
+    const data = response.data;
+  if(data.success){
+    setNews(data.data);
+
+  }  }, (error) => {
+    setError(error.response?.data?.message || "failed to fetch news")
+  }
+
+  ) .finally(()=>{
+    setLoading(false);
+  })
+  
+  
+  }
+
+  useEffect(()=>{
+    getNews()
+  },[])
   return (
     <Box
       sx={{
@@ -48,7 +75,7 @@ function Dashboard() {
           height:"fit-content"
         }}
       >
-        <NewsCard />
+        <NewsCard newsData={news} />
       </Paper>
 
       {/* Right column with two cards stacked, flexible width */}
@@ -69,6 +96,7 @@ function Dashboard() {
           <Typography variant="body2">Some content here...</Typography>
         </Paper> */}
         <Paper elevation={2} sx={{ padding: 2, borderRadius: 2, boxSizing: "border-box", overflowY: "auto", }}>
+
           <Typography variant="subtitle1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, officiis rem ad vel quibusdam, explicabo tempore illum, quasi odit sequi dolor blanditiis obcaecati soluta maxime nisi porro delectus maiores impedit dignissimos aliquam deleniti magni vitae optio repellat. Officia nam itaque, aperiam quis ex tenetur magnam consectetur earum accusantium assumenda numquam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, officiis rem ad vel quibusdam, explicabo tempore illum, quasi odit sequi dolor blanditiis obcaecati soluta maxime nisi porro delectus maiores impedit dignissimos aliquam deleniti magni vitae optio repellat. Officia nam itaque, aperiam quis ex tenetur magnam consectetur earum accusantium assumenda numquam</Typography>
           <Typography variant="body2">Additional info...</Typography>
         </Paper>
